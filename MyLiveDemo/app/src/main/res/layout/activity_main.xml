@@ -19,16 +19,34 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true">
         <RadioButton
+            android:checked="true"
+            android:id="@+id/bottom_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
-            />
+            android:drawableTop="@drawable/home_icon_radio"
+            android:text="首页"
+            android:textAlignment="center"
+            android:background="@android:color/transparent"/>
         <RadioButton
+            android:id="@+id/bottom_mine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
-            />
+            android:drawableTop="@drawable/mine_icon_radio"
+            android:text="我的"
+            android:textAlignment="center"
+            android:background="@android:color/transparent"/>
     </RadioGroup>
+
+    <ImageView
+        android:id="@+id/start_live_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_icon_kaibo"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+
 </RelativeLayout>
