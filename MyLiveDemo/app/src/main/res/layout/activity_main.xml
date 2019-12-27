@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/main_fra"
-        android:layout_above="@id/main_bottom"/>
+        />
     <RadioGroup
         android:id="@+id/main_bottom"
         android:layout_width="match_parent"
