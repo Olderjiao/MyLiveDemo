@@ -16,7 +16,11 @@ import com.example.mylivedemo.entity.HomeEntity;
 import com.example.mylivedemo.mvp.model.HomeModel;
 import com.example.mylivedemo.mvp.presenter.IPresenter;
 import com.example.mylivedemo.mvp.view.HomeView;
+import com.example.mylivedemo.ui.adapter.HomeVpAdapter;
 import com.google.android.material.tabs.TabLayout;
+import com.youth.banner.BannerConfig;
+
+import java.util.ArrayList;
 
 /**
  * @author: create by OlderJiao
@@ -26,7 +30,16 @@ public class FragmentHome extends Fragment {
 
     private TabLayout home_tab;
     private ViewPager viewPager;
-    private IPresenter<HomeEntity> presenter;
+
+    //viewpager需要绑定的集合
+    private ArrayList<Fragment> fragments = new ArrayList<>();
+
+    //碎片对象
+    private AttentionFragment attentionFragment = new AttentionFragment();
+    private FragmentHot fragmentHot = new FragmentHot();
+    private FragmentNewPeople fragmentNewPeople = new FragmentNewPeople();
+    private FragmentSpot fragmentSpot = new FragmentSpot();
+
 
     @Nullable
     @Override
@@ -46,12 +59,20 @@ public class FragmentHome extends Fragment {
         viewPager = view.findViewById(R.id.home_vp);
 
         //添加数据
-        home_tab.addTab(home_tab.newTab().setText("关注"));
-        home_tab.addTab(home_tab.newTab().setText("热门"));
-        home_tab.addTab(home_tab.newTab().setText("新人"));
-        home_tab.addTab(home_tab.newTab().setText("现场"));
+        ArrayList<String> titles = new ArrayList<>();
+        titles.add("关注");
+        titles.add("热门");
+        titles.add("新人");
+        titles.add("现场");
 
+        fragments.add(attentionFragment);
+        fragments.add(fragmentHot);
+        fragments.add(fragmentNewPeople);
+        fragments.add(fragmentSpot);
 
-
+        //viewpage适配器
+        HomeVpAdapter vpAdapter = new HomeVpAdapter(getFragmentManager(), fragments, titles);
+        viewPager.setAdapter(vpAdapter);
+        home_tab.setupWithViewPager(viewPager);
     }
 }

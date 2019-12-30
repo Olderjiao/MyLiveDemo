@@ -1,6 +1,11 @@
 package com.example.mylivedemo.myuitils;
 
 import com.example.mylivedemo.BaseUrl;
+import com.example.mylivedemo.entity.HomeEntity;
+import com.example.mylivedemo.mvp.IView;
+import com.example.mylivedemo.mvp.model.HomeModel;
+import com.example.mylivedemo.mvp.presenter.IPresenter;
+import com.example.mylivedemo.mvp.view.HomeView;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -34,4 +39,7 @@ public class RetrofitSingle {
         return retrofit;
     }
 
+    public IPresenter getIPresenter(HomeModel model, HomeView view){
+        return new IPresenter(model, view);
+    }
 }

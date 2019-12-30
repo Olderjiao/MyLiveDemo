@@ -17,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white">
         <RadioButton
             android:checked="true"
             android:id="@+id/bottom_home"

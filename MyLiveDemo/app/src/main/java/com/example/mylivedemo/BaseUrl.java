@@ -9,5 +9,6 @@ public class BaseUrl {
 
     //请求主页面数据
     public static final String HOME_URL = "/home/v5p2/homeData.android";
-
+    public static final String ATTENTION_URL = "/home/v5/recommend.android";
+    public static final String NEWPEOPLE_URL ="/home/v5/pageNewestAnchor.android";
 }

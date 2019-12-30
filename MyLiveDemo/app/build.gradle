@@ -50,4 +50,8 @@ dependencies {
 
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
 
+    api('com.jcodecraeer:xrecyclerview:1.5.9') {
+        exclude group: 'com.android.support'
+    }
+
 }

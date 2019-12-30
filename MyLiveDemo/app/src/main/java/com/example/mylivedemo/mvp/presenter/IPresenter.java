@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.example.mylivedemo.Api;
 import com.example.mylivedemo.ApiDoman;
+import com.example.mylivedemo.entity.AttentionEntity;
+import com.example.mylivedemo.entity.BaseEntity;
 import com.example.mylivedemo.entity.HomeEntity;
 import com.example.mylivedemo.mvp.IView;
 import com.example.mylivedemo.mvp.model.HomeModel;
@@ -29,26 +31,30 @@ public class IPresenter<T> extends BasePresenter<HomeView> {
         this.view = view;
     }
 
-    public void getHomeData(){
-        model.HomeData(ApiDoman.API_DOMAN_HOMEDATA)
+    public void getHomeData(final int type){
+        model.HomeData(type)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<T>() {
+                .subscribe(new Observer<BaseEntity>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(T t) {
-                        if(t instanceof HomeEntity){
-                            view.onSuccess((HomeEntity)t);
+                    public void onNext(BaseEntity baseEntity) {
+                        if(type == ApiDoman.API_DOMAN_ATTENTIONDATA){
+                            view.onSuccess(baseEntity);
+                        }else if(type == ApiDoman.API_DOMAN_HOMEDATA){
+                            view.onSuccess(baseEntity);
+                        }else if(type == ApiDoman.API_DOMAN_NEWPEOPLEDATA){
+                            view.onSuccess(baseEntity);
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e("###","error----请求失败");
+
                     }
 
                     @Override
