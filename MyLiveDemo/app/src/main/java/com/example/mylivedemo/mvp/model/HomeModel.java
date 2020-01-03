@@ -6,15 +6,15 @@ import com.example.mylivedemo.entity.AttentionEntity;
 import com.example.mylivedemo.entity.BaseEntity;
 import com.example.mylivedemo.entity.HomeEntity;
 import com.example.mylivedemo.entity.NewPeopleEntity;
+import com.example.mylivedemo.entity.PopularityEntity;
+import com.example.mylivedemo.entity.RichRankEntity;
+import com.example.mylivedemo.entity.StartRankEntity;
+import com.example.mylivedemo.entity.WeekEntity;
 import com.example.mylivedemo.myuitils.MyUtils;
 
 import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.internal.functions.Functions;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author: create by OlderJiao
@@ -46,12 +46,40 @@ public class HomeModel<T> {
                 Observable<NewPeopleEntity> newPeopleData = MyUtils
                         .getRetrofit().create(Api.class)
                         .getNewPeopleData();
-                ob = Observable.fromArray(newPeopleData).flatMap((Function) Functions.identity(),false,1);
+                ob = Observable.fromArray(newPeopleData).flatMap((Function) Functions.identity(), false, 1);
+                break;
+            case ApiDoman.API_WEEK_RANK:
+                Observable<WeekEntity> weekEntityObservable = MyUtils
+                        .getRetrofit().create(Api.class)
+                        .getWeekRankData();
+                ob = Observable.fromArray(weekEntityObservable).flatMap((Function) Functions.identity(), false, 1);
                 break;
         }
-
         return ob;
     }
 
+    public Observable<BaseEntity> HomeData(int type, int pageSize, int rank_type) {
+        Observable<BaseEntity> ob = null;
+        switch (type) {
+            case ApiDoman.API_DOMAN_RANK_START:
+                Observable<StartRankEntity> rankData = MyUtils.getRetrofit().create(Api.class)
+                        .getRankData(pageSize + "", rank_type + "");
+                ob = Observable.fromArray(rankData).flatMap((Function) Functions.identity(), false, 1);
+                break;
+            case ApiDoman.API_DOMAN_RANK_RICH:
+                Observable<RichRankEntity> richRankEntityObservable = MyUtils.getRetrofit()
+                        .create(Api.class)
+                        .getRichRankData(pageSize + "", rank_type + "");
+                ob = Observable.fromArray(richRankEntityObservable).flatMap((Function) Functions.identity(), false, 1);
+                break;
+            case ApiDoman.API_POPULARITY_RANK:
+                Observable<PopularityEntity> popularityData = MyUtils.getRetrofit()
+                        .create(Api.class)
+                        .getPopularityData(pageSize + "", rank_type + "");
+                ob = Observable.fromArray(popularityData).flatMap((Function) Functions.identity(), false, 1);
+                break;
+        }
+        return ob;
+    }
 
 }

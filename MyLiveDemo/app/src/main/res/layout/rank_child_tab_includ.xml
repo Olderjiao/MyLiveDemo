@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日"
+            android:textColor="@android:color/black"
+            android:id="@+id/day_btn"
+            />
+        <include layout="@layout/ver_line"
+            android:layout_marginLeft="20dp"
+            android:layout_height="10dp"
+            android:layout_width="1dp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="周"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/week_btn"
+            android:textColor="@color/defaultFontColor"
+            />
+        <include layout="@layout/ver_line"
+            android:layout_marginLeft="20dp"
+            android:layout_height="10dp"
+            android:layout_width="1dp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="月"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/month_btn"
+            android:textColor="@color/defaultFontColor"
+            />
+        <include layout="@layout/ver_line"
+            android:layout_marginLeft="20dp"
+            android:layout_height="10dp"
+            android:layout_width="1dp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="总"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/defaultFontColor"
+            android:id="@+id/all_btn"
+            />
+    </LinearLayout>
+</RelativeLayout>

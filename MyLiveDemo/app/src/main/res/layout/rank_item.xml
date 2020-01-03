@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:paddingBottom="10dp">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rank_rel"
+        android:layout_centerVertical="true">
+        <ImageView
+            android:id="@+id/rank_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/rank_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:visibility="gone"
+            android:layout_toRightOf="@id/rank_img"
+            android:textColor="@android:color/black"
+            />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/rank_anthor_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/rank_rel" />
+
+    <ImageView
+        android:id="@+id/level_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/rank_anthor_head" />
+
+    <TextView
+        android:id="@+id/rank_nick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/level_img" />
+
+    <ImageView
+        android:id="@+id/rank_isshow_live"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:visibility="gone"
+        android:background="@mipmap/ic_show_live_icon" />
+    <View
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/rank_anthor_head"
+        android:layout_marginTop="20dp"/>
+</RelativeLayout>

@@ -49,6 +49,8 @@ public class IPresenter<T> extends BasePresenter<HomeView> {
                             view.onSuccess(baseEntity);
                         }else if(type == ApiDoman.API_DOMAN_NEWPEOPLEDATA){
                             view.onSuccess(baseEntity);
+                        }else if(type == ApiDoman.API_WEEK_RANK){
+                            view.onSuccess(baseEntity);
                         }
                     }
 
@@ -64,4 +66,36 @@ public class IPresenter<T> extends BasePresenter<HomeView> {
                 });
     }
 
+    public void  getRankData(final int type, int pageSize, int rank_type){
+        model.HomeData(type,pageSize,rank_type)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseEntity>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(BaseEntity baseEntity) {
+                        if(type == ApiDoman.API_DOMAN_RANK_START){
+                            view.onSuccess(baseEntity);
+                        }else if(type == ApiDoman.API_DOMAN_RANK_RICH){
+                            view.onSuccess(baseEntity);
+                        }else if(type == ApiDoman.API_POPULARITY_RANK){
+                            view.onSuccess(baseEntity);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 }
