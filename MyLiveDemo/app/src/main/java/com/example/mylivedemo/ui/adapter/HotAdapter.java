@@ -1,6 +1,7 @@
 package com.example.mylivedemo.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.style.LineHeightSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.mylivedemo.R;
 import com.example.mylivedemo.entity.HomeEntity;
+import com.example.mylivedemo.ui.activity.LiveActivity;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
@@ -54,13 +56,26 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.HotItemHolder>{
      * @param position
      */
     @Override
-    public void onBindViewHolder(@NonNull HotItemHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HotItemHolder holder, final int position) {
         Glide.with(context)
                 .load(beans.get(position).getPic51())
                 .transition(withCrossFade())
                 .apply(new RequestOptions().priority(Priority.HIGH))
                 .into(holder.liver_img);
         holder.liver_nick.setText(beans.get(position).getName());
+
+        //点击事件跳转
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //获取roomid
+                String roomid = beans.get(position).getRoomid();
+                Intent intent = new Intent(context, LiveActivity.class);
+                intent.putExtra("roomId",roomid);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -78,4 +93,5 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.HotItemHolder>{
             liver_nick = itemView.findViewById(R.id.anchor_nick);
         }
     }
+
 }

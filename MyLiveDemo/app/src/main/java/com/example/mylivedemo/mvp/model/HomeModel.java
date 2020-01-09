@@ -5,6 +5,7 @@ import com.example.mylivedemo.ApiDoman;
 import com.example.mylivedemo.entity.AttentionEntity;
 import com.example.mylivedemo.entity.BaseEntity;
 import com.example.mylivedemo.entity.HomeEntity;
+import com.example.mylivedemo.entity.LiveEntity;
 import com.example.mylivedemo.entity.NewPeopleEntity;
 import com.example.mylivedemo.entity.PopularityEntity;
 import com.example.mylivedemo.entity.RichRankEntity;
@@ -81,5 +82,15 @@ public class HomeModel<T> {
         }
         return ob;
     }
-
+    /**
+     * 获取直播流数据方法
+     */
+    public Observable<BaseEntity> getLiveData(String roomId){
+        Observable<BaseEntity> ob = null;
+        Observable<LiveEntity> liveData = MyUtils.getRetrofit()
+                .create(Api.class)
+                .getLiveData(roomId);
+        ob = Observable.fromArray(liveData).flatMap((Function) Functions.identity(), false, 1);
+        return ob;
+    }
 }

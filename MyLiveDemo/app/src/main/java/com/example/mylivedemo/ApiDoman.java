@@ -17,5 +17,7 @@ public class ApiDoman {
     public static final int API_POPULARITY_RANK = 6;
     //周排行
     public static final int API_WEEK_RANK = 7;
+    //直播流数据
+    public static final int API_LIVE = 8;
 
 }

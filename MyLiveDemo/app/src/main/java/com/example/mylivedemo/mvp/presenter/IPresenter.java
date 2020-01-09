@@ -7,6 +7,7 @@ import com.example.mylivedemo.ApiDoman;
 import com.example.mylivedemo.entity.AttentionEntity;
 import com.example.mylivedemo.entity.BaseEntity;
 import com.example.mylivedemo.entity.HomeEntity;
+import com.example.mylivedemo.entity.LiveEntity;
 import com.example.mylivedemo.mvp.IView;
 import com.example.mylivedemo.mvp.model.HomeModel;
 import com.example.mylivedemo.mvp.view.HomeView;
@@ -85,6 +86,39 @@ public class IPresenter<T> extends BasePresenter<HomeView> {
                         }else if(type == ApiDoman.API_POPULARITY_RANK){
                             view.onSuccess(baseEntity);
                         }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    /**
+     * 获取直播流数据
+     */
+    public void  getLiveIO(String roomId){
+        model.getLiveData(roomId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseEntity>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(BaseEntity baseEntity) {
+
+                        if(baseEntity instanceof LiveEntity){
+                            view.onSuccess(baseEntity);
+                        }
+
                     }
 
                     @Override

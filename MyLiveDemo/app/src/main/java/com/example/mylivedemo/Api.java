@@ -3,6 +3,7 @@ package com.example.mylivedemo;
 import com.example.mylivedemo.entity.AttentionEntity;
 import com.example.mylivedemo.entity.BaseEntity;
 import com.example.mylivedemo.entity.HomeEntity;
+import com.example.mylivedemo.entity.LiveEntity;
 import com.example.mylivedemo.entity.NewPeopleEntity;
 import com.example.mylivedemo.entity.PopularityEntity;
 import com.example.mylivedemo.entity.RichRankEntity;
@@ -47,4 +48,7 @@ public interface Api {
     @GET(BaseUrl.RANK_WEEK_URL)
     Observable<WeekEntity> getWeekRankData();
 
+    //获取直播流 数据
+    @GET(BaseUrl.LIVE_URL)
+    Observable<LiveEntity> getLiveData(@Query("roomId")String roomId);
 }

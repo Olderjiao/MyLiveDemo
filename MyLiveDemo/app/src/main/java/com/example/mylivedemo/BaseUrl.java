@@ -19,4 +19,7 @@ public class BaseUrl {
     public static final  String RANK_POPULARITY_URL = "/rank/v1/rankPopularity.android";
     //周排行
     public static final String RANK_WEEK_URL = "/activity/star/v1/rankAll.android?imei=865166022616562&ip=222.128.178.153&poid=1&product=android&signature=25b60e5a0629791d6d58d8e74c3c82b2&sver=5.9.19&sysver=Android5.1.1&ts=1577176980266&unid=8c2342ae6b43bf959c245a9f1a806720&weekly=1&";
+    //获取直播fly
+    public static final String LIVE_URL = "/play/v9/preLoading.android";
+
 }
