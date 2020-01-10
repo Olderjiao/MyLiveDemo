@@ -60,15 +60,16 @@ public class FragmentHot extends Fragment implements HomeView<HomeEntity> {
         initView(view);
         return view;
     }
+
     /**
-        *   @ProjectName:
-        *   @Package: com.example.mylivedemo.ui.fragment
-        *   @ClassName: FragmentHot
-        *   @CreateDate: 2019/12/28 9:05
-        *   @UpdateTime: 2019/12/28 9:05
-        *   @UpdateRemark: 对布局进行初始化
-        *   @Version: 版本1.0
-    */
+     * @ProjectName:
+     * @Package: com.example.mylivedemo.ui.fragment
+     * @ClassName: FragmentHot
+     * @CreateDate: 2019/12/28 9:05
+     * @UpdateTime: 2019/12/28 9:05
+     * @UpdateRemark: 对布局进行初始化
+     * @Version: 版本1.0
+     */
     private void initView(View view) {
 
         //获取控件
@@ -81,12 +82,12 @@ public class FragmentHot extends Fragment implements HomeView<HomeEntity> {
         hot_recyc.setLayoutManager(manager);
 
         //创建适配器
-        adapter = new HotAdapter(getContext(),antor_list);
+        adapter = new HotAdapter(getContext(), antor_list);
         //设置适配器
         hot_recyc.setAdapter(adapter);
 
 //        adapter.addHeaderView(View.inflate(getContext(),R.layout.banner_layout,null));
-        banner_view = LayoutInflater.from(getContext()).inflate(R.layout.banner_layout,null);
+        banner_view = LayoutInflater.from(getContext()).inflate(R.layout.banner_layout, null);
         //添加头布局
         hot_recyc.addHeaderView(banner_view);
         //获取到abnner
@@ -105,27 +106,28 @@ public class FragmentHot extends Fragment implements HomeView<HomeEntity> {
 
             @Override
             public void onLoadMore() {
-
+                //停止加载更多
+                hot_recyc.loadMoreComplete();
             }
         });
 //        ((DefaultItemAnimator)hot_recyc.getItemAnimator()).setSupportsChangeAnimations(false);
 
         //开始加载网络数据
-        iPresenter = RetrofitSingle.getInstance().getIPresenter(new HomeModel(),this);
+        iPresenter = RetrofitSingle.getInstance().getIPresenter(new HomeModel(), this);
         iPresenter.getHomeData(ApiDoman.API_DOMAN_HOMEDATA);
     }
 
     @Override
     public void onSuccess(BaseEntity baseEntity) {
 
-        HomeEntity homeEntity = (HomeEntity)baseEntity;
+        HomeEntity homeEntity = (HomeEntity) baseEntity;
         antor_list.clear();
         banners.clear();
         adapter.notifyDataSetChanged();
 
-        if(homeEntity.getStatus() == 200){
+        if (homeEntity.getStatus() == 200) {
             antor_list.addAll(homeEntity.getMessage().getAnchors());
-            for(int i = 0;i < homeEntity.getMessage().getBanners().size();i++){
+            for (int i = 0; i < homeEntity.getMessage().getBanners().size(); i++) {
                 banners.add(homeEntity.getMessage().getBanners().get(i).getPicUrl());
             }
             //更新适配器
@@ -138,6 +140,7 @@ public class FragmentHot extends Fragment implements HomeView<HomeEntity> {
             banner.start();
             //停止刷新
             hot_recyc.refreshComplete();
+
         }
     }
 
@@ -154,11 +157,11 @@ public class FragmentHot extends Fragment implements HomeView<HomeEntity> {
     /**
      * 图片加载器类
      */
-    class MyBannerImageLoader extends ImageLoader{
+    class MyBannerImageLoader extends ImageLoader {
 
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
-            Glide.with(context).load((String)path).into(imageView);
+            Glide.with(context).load((String) path).into(imageView);
         }
     }
 
@@ -166,7 +169,7 @@ public class FragmentHot extends Fragment implements HomeView<HomeEntity> {
     public void onDestroy() {
         super.onDestroy();
         //进行资源回收
-        if(hot_recyc != null){
+        if (hot_recyc != null) {
             hot_recyc.destroy();
             hot_recyc = null;
         }

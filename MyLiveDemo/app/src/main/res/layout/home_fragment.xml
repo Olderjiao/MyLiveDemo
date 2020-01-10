@@ -1,63 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/home_title"
         >
-        <RelativeLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2">
-            <ImageView
-                android:id="@+id/ic_search_btn"
-                android:layout_width="wrap_content"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/ic_home_page_search"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
+                android:orientation="horizontal"
+                android:id="@+id/home_title"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2">
+                    <ImageView
+                        android:id="@+id/ic_search_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/ic_home_page_search"
+                        android:layout_centerInParent="true"/>
+                </RelativeLayout>
 
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/home_tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:tabMode="scrollable"/>
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/home_tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:tabMode="scrollable"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2">
-            <ImageView
-                android:id="@+id/ic_rank_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/icon_home_rank"
-                android:layout_centerInParent="true"
-                />
-        </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2">
+                    <ImageView
+                        android:id="@+id/ic_rank_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/icon_home_rank"
+                        android:layout_centerInParent="true"
+                        />
+                </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2">
-            <ImageView
-                android:id="@+id/ic_msg_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/icon_news"
-                android:layout_centerInParent="true"
-                />
-        </RelativeLayout>
-    </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2">
+                    <ImageView
+                        android:id="@+id/ic_msg_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/icon_news"
+                        android:layout_centerInParent="true"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/home_vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/home_title"/>
-</RelativeLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -14,8 +14,7 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 public class BottomBehavior extends CoordinatorLayout.Behavior<View> {
     private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
-    private float viewY;
-    //    控件距离coordinatorLayout底部距离
+    private float viewY;//    控件距离coordinatorLayout底部距离
     private boolean isAnimate;//动画是否在进行
 
     public BottomBehavior(Context context, AttributeSet attrs) {
