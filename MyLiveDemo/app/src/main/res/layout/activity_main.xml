@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,43 +11,49 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/main_fra"
-        />
-    <RadioGroup
-        android:id="@+id/main_bottom"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/white">
-        <RadioButton
-            android:checked="true"
-            android:id="@+id/bottom_home"
+        android:layout_gravity="bottom"
+        app:layout_behavior=".ui.widget.BottomBehavior">
+        <RadioGroup
+            android:id="@+id/main_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/home_icon_radio"
-            android:text="首页"
-            android:textAlignment="center"
-            android:background="@android:color/transparent"/>
-        <RadioButton
-            android:id="@+id/bottom_mine"
-            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/white">
+            <RadioButton
+                android:checked="true"
+                android:id="@+id/bottom_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/home_icon_radio"
+                android:text="首页"
+                android:textAlignment="center"
+                android:background="@android:color/transparent"/>
+            <RadioButton
+                android:id="@+id/bottom_mine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/mine_icon_radio"
+                android:text="我的"
+                android:textAlignment="center"
+                android:background="@android:color/transparent"/>
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/start_live_btn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/mine_icon_radio"
-            android:text="我的"
-            android:textAlignment="center"
-            android:background="@android:color/transparent"/>
-    </RadioGroup>
+            android:background="@drawable/home_icon_kaibo"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/start_live_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/home_icon_kaibo"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"/>
-
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
