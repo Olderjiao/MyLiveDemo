@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.LiveActivity"
     android:background="@android:color/black">
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:id="@+id/i_spinner"/>
     <com.tencent.rtmp.ui.TXCloudVideoView
         android:layout_width="@dimen/x1080"
         android:layout_height="300dp"
