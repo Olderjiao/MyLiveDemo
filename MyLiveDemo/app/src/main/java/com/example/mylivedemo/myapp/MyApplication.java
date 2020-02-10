@@ -3,6 +3,7 @@ package com.example.mylivedemo.myapp;
 import android.app.Application;
 
 import com.tencent.rtmp.TXLiveBase;
+import com.umeng.commonsdk.UMConfigure;
 
 /**
  * @author: create by OlderJiao
@@ -16,6 +17,7 @@ public class MyApplication extends Application {
         String licenceURL = "http://license.vod2.myqcloud.com/license/v1/d33a2cf9363ec244fb4335781785e44c/TXLiveSDK.licence"; // 获取到的 licence url
         String licenceKey = "16ee7d09a6517ee5597dbc47c68d3f2b"; // 获取到的 licence key
         TXLiveBase.getInstance().setLicence(this, licenceURL, licenceKey);
+        UMConfigure.init(this,UMConfigure.DEVICE_TYPE_PHONE,"d7fcec413fce5cccd025907e910df4ea");
     }
 
 }

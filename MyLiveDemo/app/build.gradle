@@ -4,6 +4,8 @@ android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
     defaultConfig {
+        flavorDimensions "default"//---------------------这句话需要添加
+
         applicationId "com.example.mylivedemo"
         minSdkVersion 22
         targetSdkVersion 28
@@ -17,8 +19,48 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //Add the following configuration
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    productFlavors {
+        Alpha {//自己打包测试使用
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: Alpha]
+        }
+        Tencent {//投放应用宝市场
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: Tencent]
+        }
+        Baidu {//投放百度市场
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: Baidu]
+        }
+        Qihoo {//投放360市场
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: Qihoo]
+        }
+        Alibaba {//投放阿里巴巴
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: Alibaba]
+        }
+        Vivo {//投放vivo市场
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: Vivo]
+        }
+        Oppo {//投放oppo市场
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: Oppo]
+        }
+        Xiaomi {//投放小米市场
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: Xiaomi]
+        }
+        Huawei {//投放华为应用市场
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: Huawei]
+        }
+
+        productFlavors.all { flavor ->
+            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
         }
     }
 }
@@ -53,5 +95,8 @@ dependencies {
     implementation 'com.android.support:design:28.0.0'
 
     implementation 'com.github.kaisengao:KsgLikeView:1.0.1'
+
+    implementation 'com.umeng.sdk:common:1.5.1'
+    implementation 'com.umeng.sdk:analytics:7.5.0'
 
 }
