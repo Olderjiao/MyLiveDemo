@@ -40,6 +40,11 @@
 -keep public interface com.umeng.socialize.sensor.**
 -keep public interface com.umeng.scrshot.**
 
+-keep class com.io.reactivex.**
+-keep class com.retrofit2.**
+#防止解析出来的数据被混淆 导致显示不出来画面
+-keep class com.example.mylivedemo.entity.** { *; }
+
 -keep public class com.umeng.socialize.* {*;}
 
 
@@ -109,4 +114,6 @@
 -keep class com.linkedin.** { *; }
 -keep class com.android.dingtalk.share.ddsharemodule.** { *; }
 -keep class com.tencent.** { *; }
+
+
 -keepattributes Signature

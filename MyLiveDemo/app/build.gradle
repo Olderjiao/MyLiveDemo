@@ -1,6 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    signingConfigs {
+        //签名配置要在buildtypes之前
+        // 签名文件放在build.gradle同级目录
+        myConfig {
+            storeFile file("C:\\Users\\jiaozihan\\.android\\LiveDemo.jks")
+            storePassword "jiao123456" //写入自己的
+            keyAlias "key0"
+            keyPassword "jiao123456"
+        }
+    }
+
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
     defaultConfig {
@@ -9,14 +21,17 @@ android {
         applicationId "com.example.mylivedemo"
         minSdkVersion 22
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
             abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
         }
     }
+
+
+
     buildTypes {
         release {
             minifyEnabled true
